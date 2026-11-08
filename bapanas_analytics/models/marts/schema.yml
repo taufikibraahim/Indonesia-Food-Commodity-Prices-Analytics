@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: mart_monthly_commodity_trend
+    description: "Tabel agregasi bulanan untuk melihat tren dan inflasi komoditas (Month-over-Month)."
+    columns:
+      - name: avg_harga
+        description: "Harga rata-rata bulanan."
+        tests:
+          # Memastikan fungsi AVG berjalan dengan baik dan data siap di-plot ke grafik
+          - not_null
+
+      - name: presentase_perubahan_avg_harga
+        description: "Persentase perubahan dibanding bulan sebelumnya."
+        tests:
+          # Memastikan pembagian matematika (Division by Zero protection) kita benar-benar berhasil
+          - not_null
+
+  - name: mart_daily_volatility
+    description: "Tabel analisis pergerakan harga harian ekstrem."
+    columns:
+      - name: selisih_harga
+        description: "Selisih nominal rupiah dengan hari sebelumnya."
+        tests:
+          - not_null
+
+      - name: persentase_volatilitas_absolute
+        description: "Nilai persentase absolut untuk kebutuhan sorting."
+        tests:
+          - not_null
+
+      - name: status_volatilitas
+        description: "Label peringatan untuk Dasbor Streamlit."
+        tests:
+          - not_null
+          # Ini SANGAT krusial: Memastikan rumus CASE WHEN kita tidak salah ketik (typo)
+          # sehingga dasbor Streamlit akan selalu menerima 3 kategori yang konsisten.
+          - accepted_values:
+              values:
+                [
+                  "Lonjakan Ekstrem (> 5%)",
+                  "Penurunan Ekstrem (< -5%)",
+                  "Stabil",
+                ]

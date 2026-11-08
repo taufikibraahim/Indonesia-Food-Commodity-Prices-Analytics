@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: bapanas # Nama alias untuk sumber data kita
+    database: food_prices # Nama database di PostgreSQL Anda
+    schema: public # Skema bawaan tempat Kestra menaruh data
+    tables:
+      - name: national_prices
+        description: "Data mentah harga pangan harian langsung dari Kestra/API Bapanas"

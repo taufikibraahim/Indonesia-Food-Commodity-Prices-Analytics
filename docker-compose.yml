@@ -1,0 +1,43 @@
+services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=food_prices
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_food_data:/var/lib/postgresql/data
+    networks:
+      - default
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - "8081:80"
+    networks:
+      - default
+
+  kestra:
+    image: kestra/kestra:latest
+    container_name: kestra
+    user: root
+    command: server local
+    ports:
+      - "8082:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - default
+
+volumes:
+  pg_food_data:
+  pgadmin_data:
+
+networks:
+  default:
+    name: food-price-etl_default

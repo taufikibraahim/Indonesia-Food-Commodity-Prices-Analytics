@@ -1,0 +1,38 @@
+version: 2
+models:
+  - name: stg_bapanas_prices
+    description: "Model staging untuk data harga pangan harian dari Bapanas"
+    columns:
+      - name: id
+        description: "ID unik untuk setiap entri harga pangan"
+        tests:
+          - unique
+          - not_null
+
+      - name: tanggal
+        description: "Tanggal harga pangan dicatat"
+        tests:
+          - not_null
+
+      - name: provinsi
+        description: "Nama provinsi tempat harga pangan dicatat"
+        tests:
+          - not_null
+
+      - name: komoditas
+        description: "Nama bahan pokok"
+        tests:
+          - not_null
+
+      - name: tipe_pasar
+        description: "Tingkatan rantai pasok pasar"
+        tests:
+          - not_null
+          # Memastikan tidak ada jenis pasar "aneh" atau typo dari sumber aslinya
+          - accepted_values:
+              values: ["Pasar Tradisional", "Pasar Modern", "Produsen"]
+
+      - name: harga_bersih
+        description: "Harga dalam Rupiah setelah dibersihkan dari anomali minus/tak wajar"
+        tests:
+          - not_null
