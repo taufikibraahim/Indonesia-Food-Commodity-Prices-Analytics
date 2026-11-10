@@ -40,5 +40,18 @@ models:
                 [
                   "Lonjakan Ekstrem (> 5%)",
                   "Penurunan Ekstrem (< -5%)",
+                  "Pembaruan Berkala",
                   "Stabil",
                 ]
+
+  - name: mart_latest_price_snapshot
+    description: "Satu bari per seri (provinsi, komoditas, tipe_pasar) berisi harga terbaru dan perubahannya"
+    columns:
+      - name: harga_terbaru
+        description: "Harga pada tanggal terakhir seri."
+        tests:
+          - not_null
+      - name: is_data_terkini
+        description: "True bila tanggal seri sama dengan tanggal data terbaru secara global."
+        tests:
+          - not_null
