@@ -29,6 +29,9 @@ services:
     command: server local
     environment:
       ENV_DATABASE_URL: ${DATABASE_URL}
+      ENV_DBT_USER: ${DBT_USER}
+      ENV_DBT_PASSWORD: ${DBT_PASSWORD}
+      ENV_DBT_DBNAME: ${DBT_DBNAME}
     ports:
       - "8082:8080"
     volumes:

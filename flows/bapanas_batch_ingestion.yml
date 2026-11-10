@@ -1,6 +1,6 @@
 id: bapanas_batch_ingestion
 namespace: data_engineering.etl
-description: "Backfill historis dari dataset Kaggle (statis). Dijalankan manual."
+description: "Backfill historis dari dataset Kaggle (statis): ingestion lalu dbt build. Dijalankan manual."
 
 tasks:
   - id: run_etl_container
@@ -18,3 +18,18 @@ tasks:
       type: constant
       interval: PT1M
       maxAttempt: 3
+
+  - id: run_dbt_build
+    type: io.kestra.plugin.docker.Run
+    containerImage: food_price_dbt:v1
+    pullPolicy: NEVER
+    networkMode: food-price-etl_default
+    env:
+      DBT_USER: "{{ envs.dbt_user }}"
+      DBT_PASSWORD: "{{ envs.dbt_password }}"
+      DBT_DBNAME: "{{ envs.dbt_dbname }}"
+    commands:
+      - dbt
+      - build
+      - --project-dir
+      - /dbt/bapanas_analytics
