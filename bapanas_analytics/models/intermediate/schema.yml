@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: int_bapanas_prices_flagged
+    description: "Harga dengan penanda anomali relatif terhadap median komoditas dan tipe pasar."
+    columns:
+      - name: is_anomali
+        description: "True bila harga diluar batas wajar"
+        tests:
+          - not_null
+      - name: alasan_anomali
+        description: "Penyebab flag anomali (null bila wajar)."
+        tests:
+          - accepted_values:
+              values:
+                ["harga_nol_atau_negatif", "terlalu_tinggi", "terlalu_rendah"]
