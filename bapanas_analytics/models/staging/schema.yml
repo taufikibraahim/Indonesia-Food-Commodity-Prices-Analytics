@@ -32,7 +32,7 @@ models:
           - accepted_values:
               values: ["Pasar Tradisional", "Pasar Modern", "Produsen"]
 
-      - name: harga_bersih
-        description: "Harga dalam Rupiah setelah dibersihkan dari anomali minus/tak wajar"
+      - name: harga_mentah
+        description: "Harga Rupiah apa adanya dari sumber."
         tests:
           - not_null
