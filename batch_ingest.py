@@ -5,7 +5,7 @@ import pandas as pd
 from sqlalchemy import create_engine, text, types
 
 # 1. Koneksi database
-engine = create_engine("postgresql://root:root@pgdatabase:5432/food_prices")
+engine = create_engine(os.environ["DATABASE_URL"])
 
 # 2. Definisikan Base Directory sesuai struktur hirarki Anda
 base_dir = os.path.join("dataset", "data_komoditas_pangan")
