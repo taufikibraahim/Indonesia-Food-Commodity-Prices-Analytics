@@ -1,0 +1,10 @@
+FROM python:3.12-slim
+
+WORKDIR /dbt
+
+RUN pip install --no-cache-dir dbt-postgres==1.11.0
+
+COPY bapanas_analytics/ ./bapanas_analytics/
+COPY docker/dbt/profiles.yml /root/.dbt/profiles.yml
+
+CMD ["dbt", "build", "--project-dir", "/dbt/bapanas_analytics"]

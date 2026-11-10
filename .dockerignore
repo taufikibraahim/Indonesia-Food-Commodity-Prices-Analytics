@@ -1,3 +1,7 @@
 .venv
 __pycache__
 .git
+
+bapanas_analytics/target
+bapanas_analytics/logs
+bapanas_analytics/dbt_packages
