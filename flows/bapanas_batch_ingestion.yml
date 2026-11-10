@@ -1,0 +1,20 @@
+id: bapanas_batch_ingestion
+namespace: data_engineering.etl
+description: "Backfill historis dari dataset Kaggle (statis). Dijalankan manual."
+
+tasks:
+  - id: run_etl_container
+    type: io.kestra.plugin.docker.Run
+    containerImage: food_price_ingestor:v1
+    pullPolicy: NEVER
+    networkMode: food-price-etl_default
+    env:
+      DATABASE_URL: "{{ envs.database_url }}"
+    commands:
+      - sh
+      - -c
+      - "cd /app && python batch_ingest.py"
+    retry:
+      type: constant
+      interval: PT1M
+      maxAttempt: 3
