@@ -180,7 +180,11 @@ Contoh cabai rawit, Pasar Modern, Nusa Tenggara Timur: sampai Februari 2022 harg
 
 ### 5. Cakupan data tidak merata
 
-Jumlah baris per seri tidak seragam. Bawang Putih (Produsen) hanya sekitar 3.000 baris, sedangkan banyak seri lain sekitar 48.000-50.000.
+Dari 1.020 kombinasi yang mungkin (10 komoditas x 34 provinsi x 3 tipe pasar), hanya
+925 seri yang memiliki data. Seri yang ada memiliki cakupan harian yang hampir penuh
+(sekitar 1.493 tanggal), sehingga perbedaan jumlah baris antar komoditas berasal dari
+jumlah provinsi yang tersedia. Contoh: Bawang Putih (Produsen) hanya 2 provinsi,
+Gula Pasir (Produsen) 14 provinsi.
 
 ## Pengujian
 
