@@ -13,15 +13,14 @@ Pipeline ELT untuk harga 10 komoditas pangan strategis di 34 provinsi Indonesia 
 
 > Proyek portofolio data engineering. Data bersifat **statis (historis)**, bukan aliran data real-time.
 
-# Ringkasan
+## Ringkasan
 
-|     |     |
-| --- | --- |
-
+|         |                                                                                     |
+| ------- | ----------------------------------------------------------------------------------- |
 | Cakupan | 10 komoditas, 34 provinsi, 3 tipe pasar (Pasar Modern, Pasar Tradisional, Produsen) |
-| Periode | Januari 2022 sampai tanggal 2026-02-12 |
-| Volume | 1.354.641 baris harga harian |
-| Stack | Python, PostgreSQL, dbt, Kestra, Docker Compose, Streamlit |
+| Periode | Januari 2022 sampai <tanggal akhir data, isi dari datamu>                           |
+| Volume  | 1.354.641 baris harga harian                                                        |
+| Stack   | Python, PostgreSQL, dbt, Kestra, Docker Compose, Streamlit                          |
 
 ## Pertanyaan yang Dijawab
 
@@ -231,6 +230,6 @@ Idempotensi: ingestion memakai constraint `UNIQUE (tanggal, provinsi, komoditas,
 - [ ] Analisis musiman (Ramadan dan Idulfitri)
 - [ ] Penyimpanan lapisan raw dalam format Parquet
 
-## Penulis
+## Author
 
-Taufik Ibrahim, [<tautan LinkedIn>](https://www.linkedin.com/in/taufikibraahim/)
+Taufik Ibrahim, Linkedin: [taufikibraahim](https://www.linkedin.com/in/taufikibraahim)
